@@ -165,7 +165,7 @@ The frontend will run on `http://localhost:3000`
 ### Base URL
 ```
 Development: http://localhost:5000/api
-Production: https://your-backend-url.onrender.com/api
+Production: https://skill-bridge-mdqk.onrender.com/api
 ```
 
 ### Authentication Endpoints
