@@ -1,7 +1,3 @@
-/**
- * Profile Routes
- * Handles user profile CRUD operations
- */
 
 const express = require('express');
 const router = express.Router();

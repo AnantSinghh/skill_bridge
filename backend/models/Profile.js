@@ -1,7 +1,3 @@
-/**
- * Profile Model
- * Stores user professional profile information
- */
 
 const mongoose = require('mongoose');
 
@@ -90,10 +86,10 @@ const profileSchema = new mongoose.Schema({
         }
     }],
     resume: {
-        type: String // URL to resume
+        type: String 
     },
     portfolio: {
-        type: String // Portfolio website URL
+        type: String 
     },
     linkedin: {
         type: String
@@ -111,7 +107,7 @@ const profileSchema = new mongoose.Schema({
     }
 });
 
-// Update the updatedAt timestamp before saving
+
 profileSchema.pre('save', function (next) {
     this.updatedAt = Date.now();
     next();

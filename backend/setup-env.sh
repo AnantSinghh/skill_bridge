@@ -1,26 +1,25 @@
-#!/bin/bash
 
-# SkillBridge Backend Environment Setup Script
 
-echo "🔧 Setting up SkillBridge Backend Environment..."
+
+
+echo " Setting up SkillBridge Backend Environment..."
 echo ""
 
-# Check if .env already exists
+
 if [ -f .env ]; then
-    echo "⚠️  .env file already exists!"
+    echo " .env file already exists!"
     read -p "Do you want to overwrite it? (y/n): " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        echo "❌ Setup cancelled."
+        echo " Setup cancelled."
         exit 1
     fi
 fi
 
-# Generate JWT Secret
 echo "🔐 Generating secure JWT secret..."
 JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(32).toString('hex'))")
 
-# Get MongoDB URI
+
 echo ""
 echo "📊 MongoDB Atlas Setup:"
 echo "   1. Go to https://www.mongodb.com/cloud/atlas"

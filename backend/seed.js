@@ -1,8 +1,3 @@
-/**
- * Database Seed Script
- * Populates the database with sample data for testing
- * Run with: node seed.js
- */
 
 require('dotenv').config();
 const mongoose = require('mongoose');
@@ -10,9 +5,8 @@ const User = require('./models/User');
 const Internship = require('./models/Internship');
 const Application = require('./models/Application');
 
-// Sample internships data - Expanded with focus on India
+
 const sampleInternships = [
-    // India-based internships (15 total)
     {
         title: 'Full Stack Developer Intern',
         company: 'Infosys Limited',
@@ -164,7 +158,6 @@ const sampleInternships = [
         applicationDeadline: new Date('2026-04-05')
     },
 
-    // International internships (20 total)
     {
         title: 'Frontend Developer Intern',
         company: 'TechCorp Solutions',
@@ -367,10 +360,8 @@ const sampleInternships = [
     }
 ];
 
-// Connect to MongoDB and seed data
 const seedDatabase = async () => {
     try {
-        // Connect to MongoDB
         await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -418,7 +409,7 @@ const seedDatabase = async () => {
         );
         console.log(`✅ Created ${internships.length} internships`);
 
-        // Create a sample application
+    
         console.log('📝 Creating sample application...');
         await Application.create({
             internship: internships[0]._id,
@@ -442,7 +433,6 @@ const seedDatabase = async () => {
         console.log('\n🚀 You can now login and browse internships!');
         console.log('   💡 Filter by country "India" to see 15 India-based internships');
 
-        // Disconnect
         await mongoose.disconnect();
         console.log('\n✅ Disconnected from MongoDB');
         process.exit(0);
@@ -453,5 +443,4 @@ const seedDatabase = async () => {
     }
 };
 
-// Run the seed function
 seedDatabase();
