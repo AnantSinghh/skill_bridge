@@ -8,10 +8,11 @@ Finding verified, high-quality global internships is often a fragmented and frus
 Frontend → Backend (API) → Database
 
 Tech Stack
-Frontend: React.js + Tailwind CSS + Axios
+Frontend: React.js + Tailwind CSS
 Backend: Node.js + Express.js
-Database: MongoDB Atlas (via Mongoose)
+Database: MongoDB Atlas 
 Authentication: JWT-based (JSON Web Tokens)
+
 Deployment
 Frontend: Vercel
 Backend: Render
@@ -28,7 +29,7 @@ Profile Mgmt	Professional profile builder (Bio, Education, Skills, Resume link) 
 Advanced UI	Modern Glassmorphism design, Responsive layout, loading skeletons, and interactive animations.
 
 5. CRUD Implementation & API Overview
-This project implements full CRUD operations. All protected routes require a valid JWT Token in the Authorization header (Bearer <token>).
+This project implements full CRUD operations. All protected routes require a valid JWT Token in the Authorization header.
 
 Authentication
 POST /api/auth/signup: Register new user (Student or Admin).
