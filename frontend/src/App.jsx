@@ -1,7 +1,4 @@
-/**
- * Main App Component
- * Sets up routing and authentication context
- */
+
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -10,7 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Pages
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -29,11 +26,11 @@ function App() {
                     <Navbar />
                     <div className="flex-grow pt-16">
                         <Routes>
-                            {/* Public Routes */}
+
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
 
-                            {/* Protected Routes */}
+
                             <Route
                                 path="/dashboard"
                                 element={
@@ -79,7 +76,7 @@ function App() {
                                 }
                             />
 
-                            {/* Admin Only Routes */}
+
                             <Route
                                 path="/admin"
                                 element={
@@ -98,10 +95,10 @@ function App() {
                                 }
                             />
 
-                            {/* Default Route */}
+
                             <Route path="/" element={<Navigate to="/login" replace />} />
 
-                            {/* 404 Route */}
+
                             <Route path="*" element={<Navigate to="/dashboard" replace />} />
                         </Routes>
                     </div>

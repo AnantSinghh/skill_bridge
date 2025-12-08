@@ -1,7 +1,4 @@
-/**
- * Internship Routes
- * Handles CRUD operations for internships
- */
+
 
 const express = require('express');
 const router = express.Router();
@@ -9,19 +6,12 @@ const { body, validationResult } = require('express-validator');
 const Internship = require('../models/Internship');
 const { protect, adminOnly } = require('../middleware/auth');
 
-/**
- * @route   GET /api/internships
- * @desc    Get all internships with optional filters and pagination
- * @access  Public
- * @query   page - Page number (default: 1)
- * @query   limit - Items per page (default: 10)
- * @query   skill, country, duration, search - Filter parameters
- */
+
 router.get('/', async (req, res) => {
     try {
         const { skill, country, duration, search, page = 1, limit = 10 } = req.query;
 
-        // Build filter object
+
         let filter = { isActive: true };
 
         if (skill) {
@@ -44,15 +34,15 @@ router.get('/', async (req, res) => {
             ];
         }
 
-        // Calculate pagination
+
         const pageNum = parseInt(page, 10);
         const limitNum = parseInt(limit, 10);
         const skip = (pageNum - 1) * limitNum;
 
-        // Get total count for pagination metadata
+
         const totalCount = await Internship.countDocuments(filter);
 
-        // Fetch paginated results
+
         const internships = await Internship.find(filter)
             .populate('createdBy', 'name email')
             .sort({ createdAt: -1 })
@@ -77,11 +67,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-/**
- * @route   GET /api/internships/:id
- * @desc    Get single internship by ID
- * @access  Public
- */
+
 router.get('/:id', async (req, res) => {
     try {
         const internship = await Internship.findById(req.params.id)
@@ -108,11 +94,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-/**
- * @route   POST /api/internships
- * @desc    Create a new internship (Admin only)
- * @access  Private/Admin
- */
+
 router.post(
     '/',
     [
@@ -128,7 +110,7 @@ router.post(
     ],
     async (req, res) => {
         try {
-            // Check for validation errors
+
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(400).json({
@@ -160,11 +142,7 @@ router.post(
     }
 );
 
-/**
- * @route   PUT /api/internships/:id
- * @desc    Update an internship (Admin only)
- * @access  Private/Admin
- */
+
 router.put('/:id', protect, adminOnly, async (req, res) => {
     try {
         let internship = await Internship.findById(req.params.id);
@@ -176,7 +154,7 @@ router.put('/:id', protect, adminOnly, async (req, res) => {
             });
         }
 
-        // Update internship
+
         internship = await Internship.findByIdAndUpdate(
             req.params.id,
             req.body,
@@ -201,11 +179,7 @@ router.put('/:id', protect, adminOnly, async (req, res) => {
     }
 });
 
-/**
- * @route   DELETE /api/internships/:id
- * @desc    Delete an internship (Admin only)
- * @access  Private/Admin
- */
+
 router.delete('/:id', protect, adminOnly, async (req, res) => {
     try {
         const internship = await Internship.findById(req.params.id);

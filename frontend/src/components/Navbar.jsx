@@ -1,7 +1,4 @@
-/**
- * Navbar Component
- * Navigation bar with authentication-aware menu and profile dropdown
- */
+
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -25,14 +22,14 @@ const Navbar = () => {
     <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+
           <Link to="/" className="flex-shrink-0 flex items-center">
             <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
               SkillBridge
             </span>
           </Link>
 
-          {/* Desktop Menu */}
+
           <div className="hidden md:flex items-center space-x-8">
             {isAuthenticated() ? (
               <>
@@ -58,7 +55,7 @@ const Navbar = () => {
                   </>
                 )}
 
-                {/* Profile Dropdown for Students */}
+
                 {!isAdmin() && (
                   <div className="relative">
                     <button
@@ -97,7 +94,7 @@ const Navbar = () => {
                   </div>
                 )}
 
-                {/* Admin Items */}
+
                 {isAdmin() && (
                   <>
                     <span className="text-gray-500 text-sm font-medium px-3 py-1 bg-gray-100 rounded-full">
@@ -124,7 +121,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Mobile menu button */}
+
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -136,7 +133,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-gray-100 shadow-lg animate-fade-in-down">
           <div className="px-4 pt-2 pb-4 space-y-2">

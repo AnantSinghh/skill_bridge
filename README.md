@@ -2,7 +2,7 @@
 
 A full-stack web application that helps students find and apply for verified global internships. Built with React.js, Node.js, Express.js, and MongoDB.
 
-## 🚀 Features
+
 
 ### For Students
 - 🔐 Secure authentication with JWT
@@ -13,13 +13,12 @@ A full-stack web application that helps students find and apply for verified glo
 - 📱 Fully responsive design
 
 ### For Admins
-- ➕ Create new internship listings
-- ✏️ Update existing internships
-- 🗑️ Delete internships
-- 👥 Manage applications
-- 📈 View all applications
+- Create new internship listings
+- Update existing internships
+- Delete internships
+- Manage applications
+- View all applications
 
-## 🛠️ Tech Stack
 
 ### Frontend
 - **React.js** - UI library
@@ -35,7 +34,7 @@ A full-stack web application that helps students find and apply for verified glo
 - **JWT** - Authentication
 - **bcryptjs** - Password hashing
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ap project/
@@ -88,7 +87,7 @@ ap project/
     └── package.json
 ```
 
-## 🔧 Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -122,10 +121,7 @@ NODE_ENV=development
 
 5. Start the backend server:
 ```bash
-# Development mode with nodemon
 npm run dev
-
-# Production mode
 npm start
 ```
 
@@ -160,7 +156,7 @@ npm start
 
 The frontend will run on `http://localhost:3000`
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Base URL
 ```
@@ -258,7 +254,7 @@ Production: https://skill-bridge-mdqk.onrender.com/api
 }
 ```
 
-## 🔐 Authentication Flow
+## Authentication Flow
 
 1. User registers/logs in
 2. Server generates JWT token
@@ -281,7 +277,7 @@ Production: https://skill-bridge-mdqk.onrender.com/api
 - View all applications
 - Update application status
 
-## 🔐 Test Credentials
+## Test Credentials
 
 Use these credentials to test the application:
 
@@ -338,7 +334,7 @@ NODE_ENV=production
 REACT_APP_API_URL=https://your-backend-url.com/api
 ```
 
-## 🧪 Testing the Application
+## Testing the Application
 
 ### Create Admin User
 Register with role set to "admin" to access admin panel.
@@ -357,7 +353,7 @@ Register with role set to "admin" to access admin panel.
 4. Fill application form
 5. Submit
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Backend won't start
 - Check MongoDB connection string
@@ -374,15 +370,15 @@ Register with role set to "admin" to access admin panel.
 - Check JWT_SECRET matches on backend
 - Verify token is being sent in headers
 
-## 📄 License
+## License
 
 This project is open source and available for educational purposes.
 
-## 👨‍💻 Author
+## Author
 
 Built as a full-stack internship finder platform.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - React.js team for the amazing library
 - Express.js for the robust backend framework

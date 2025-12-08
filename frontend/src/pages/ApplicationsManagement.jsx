@@ -1,7 +1,4 @@
-/**
- * Applications Management Page (Admin Only)
- * View and manage all internship applications
- */
+
 
 import React, { useState, useEffect, useCallback } from 'react';
 import api from '../utils/api';
@@ -14,7 +11,7 @@ const ApplicationsManagement = () => {
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
-    // Filter states
+
     const [statusFilter, setStatusFilter] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -41,12 +38,12 @@ const ApplicationsManagement = () => {
     const filterApplications = useCallback(() => {
         let filtered = [...applications];
 
-        // Filter by status
+
         if (statusFilter !== 'all') {
             filtered = filtered.filter(app => app.status === statusFilter);
         }
 
-        // Filter by search query
+
         if (searchQuery) {
             filtered = filtered.filter(app =>
                 app.studentName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -73,7 +70,7 @@ const ApplicationsManagement = () => {
                 setSuccessMessage(`Application ${newStatus} successfully!`);
                 setTimeout(() => setSuccessMessage(''), 3000);
 
-                // Update local state
+
                 setApplications(applications.map(app =>
                     app._id === applicationId ? { ...app, status: newStatus } : app
                 ));
@@ -140,14 +137,14 @@ const ApplicationsManagement = () => {
                 </div>
             )}
 
-            {/* Status Filter Tabs */}
+
             <div className="flex flex-wrap gap-2 mb-8 bg-white/50 p-2 rounded-2xl backdrop-blur-sm border border-white/20 shadow-sm">
                 {['all', 'pending', 'reviewed', 'interview', 'accepted', 'rejected'].map((status) => (
                     <button
                         key={status}
                         className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${statusFilter === status
-                                ? 'bg-indigo-600 text-white shadow-md transform scale-105'
-                                : 'bg-white/50 text-gray-600 hover:bg-white hover:text-indigo-600'
+                            ? 'bg-indigo-600 text-white shadow-md transform scale-105'
+                            : 'bg-white/50 text-gray-600 hover:bg-white hover:text-indigo-600'
                             }`}
                         onClick={() => setStatusFilter(status)}
                     >
@@ -156,7 +153,7 @@ const ApplicationsManagement = () => {
                 ))}
             </div>
 
-            {/* Search Bar */}
+
             <div className="mb-8">
                 <div className="relative max-w-xl">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -172,7 +169,7 @@ const ApplicationsManagement = () => {
                 </div>
             </div>
 
-            {/* Applications List */}
+
             {filteredApplications.length === 0 ? (
                 <div className="text-center py-12 bg-white/50 rounded-2xl border border-white/20 shadow-sm backdrop-blur-sm">
                     <p className="text-gray-500 text-lg">No applications found matching your criteria.</p>

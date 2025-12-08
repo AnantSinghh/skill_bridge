@@ -1,7 +1,4 @@
-/**
- * InternshipDetails Page
- * View detailed information about a specific internship and apply
- */
+
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -45,6 +42,25 @@ const InternshipDetails = () => {
     useEffect(() => {
         fetchInternshipDetails();
     }, [fetchInternshipDetails]);
+
+    useEffect(() => {
+        if (showApplyForm) {
+            const fetchUserProfile = async () => {
+                try {
+                    const response = await api.get('/profile/me');
+                    if (response.data.success && response.data.data?.resume) {
+                        setApplicationData(prev => ({
+                            ...prev,
+                            resume: prev.resume || response.data.data.resume
+                        }));
+                    }
+                } catch (error) {
+                    console.log('Error fetching profile for autofill:', error);
+                }
+            };
+            fetchUserProfile();
+        }
+    }, [showApplyForm]);
 
     const handleApplyClick = () => {
         setShowApplyForm(true);
@@ -132,7 +148,7 @@ const InternshipDetails = () => {
             </button>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Main Content - Left Column */}
+
                 <div className="lg:col-span-2 space-y-6">
                     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                         <div className="p-8">
@@ -197,7 +213,7 @@ const InternshipDetails = () => {
                     </div>
                 </div>
 
-                {/* Sidebar - Right Column */}
+
                 <div className="lg:col-span-1">
                     <div className="bg-white rounded-2xl shadow-lg border border-indigo-100 p-6 sticky top-24">
                         <h3 className="text-lg font-bold text-gray-900 mb-6">Application Status</h3>

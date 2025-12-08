@@ -1,7 +1,4 @@
-/**
- * ProtectedRoute Component
- * Wrapper component to protect routes that require authentication
- */
+
 
 import React from 'react';
 import { Navigate } from 'react-router-dom';

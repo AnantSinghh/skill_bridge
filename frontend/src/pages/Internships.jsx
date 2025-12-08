@@ -1,7 +1,4 @@
-/**
- * Internships Page
- * Browse and filter internship listings with pagination
- */
+
 
 import React, { useState, useEffect, useCallback } from 'react';
 import api from '../utils/api';
@@ -14,13 +11,13 @@ const Internships = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    // Pagination states
+
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [totalCount, setTotalCount] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(12);
 
-    // Filter states
+
     const [filters, setFilters] = useState({
         skill: '',
         country: '',
@@ -38,7 +35,7 @@ const Internships = () => {
             if (filters.duration) params.append('duration', filters.duration);
             if (filters.search) params.append('search', filters.search);
 
-            // Add pagination params
+
             params.append('page', currentPage);
             params.append('limit', itemsPerPage);
 
@@ -66,7 +63,7 @@ const Internships = () => {
             ...filters,
             [e.target.name]: e.target.value
         });
-        setCurrentPage(1); // Reset to first page when filters change
+        setCurrentPage(1);
     };
 
     const clearFilters = () => {
@@ -88,10 +85,10 @@ const Internships = () => {
 
     const handleItemsPerPageChange = (e) => {
         setItemsPerPage(parseInt(e.target.value));
-        setCurrentPage(1); // Reset to first page
+        setCurrentPage(1);
     };
 
-    // Generate page numbers to display
+
     const getPageNumbers = () => {
         const pages = [];
         const maxPagesToShow = 5;
@@ -229,7 +226,7 @@ const Internships = () => {
                         ))}
                     </div>
 
-                    {/* Pagination Controls */}
+
                     {totalPages > 1 && (
                         <div className="flex items-center justify-center space-x-2">
                             <button

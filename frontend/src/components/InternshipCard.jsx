@@ -1,7 +1,4 @@
-/**
- * InternshipCard Component
- * Displays internship information in a card format
- */
+
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

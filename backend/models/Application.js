@@ -1,7 +1,4 @@
-/**
- * Application Model
- * Defines the schema for internship applications submitted by students
- */
+
 
 const mongoose = require('mongoose');
 
@@ -29,7 +26,7 @@ const applicationSchema = new mongoose.Schema({
         required: [true, 'Please provide a cover letter']
     },
     resume: {
-        type: String, // URL or text
+        type: String,
         default: ''
     },
     status: {
@@ -43,7 +40,7 @@ const applicationSchema = new mongoose.Schema({
     }
 });
 
-// Prevent duplicate applications from the same student to the same internship
+
 applicationSchema.index({ internship: 1, student: 1 }, { unique: true });
 
 module.exports = mongoose.model('Application', applicationSchema);

@@ -10,7 +10,7 @@ const Footer = () => {
         <footer className="bg-white border-t border-gray-100 mt-auto">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    {/* Brand Column */}
+
                     <div className="col-span-1 md:col-span-1">
                         <Link to="/" className="flex items-center mb-4">
                             <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -36,7 +36,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+
                     <div className="col-span-1">
                         <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Platform</h3>
                         <ul className="space-y-3">
@@ -63,7 +63,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Resources */}
+
                     <div className="col-span-1">
                         <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Resources</h3>
                         <ul className="space-y-3">
@@ -90,7 +90,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Contact */}
+
                     <div className="col-span-1">
                         <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Contact Us</h3>
                         <ul className="space-y-3">

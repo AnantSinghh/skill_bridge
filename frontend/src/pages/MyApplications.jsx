@@ -1,7 +1,4 @@
-/**
- * MyApplications Page
- * View all applications submitted by the student
- */
+
 
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';

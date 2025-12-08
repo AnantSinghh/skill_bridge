@@ -1,7 +1,4 @@
-/**
- * Profile Page
- * View and edit user professional profile
- */
+
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +14,7 @@ const Profile = () => {
     const [success, setSuccess] = useState('');
     const [isEditing, setIsEditing] = useState(false);
 
-    // Form state
+
     const [formData, setFormData] = useState({
         bio: '',
         phone: '',
@@ -32,7 +29,7 @@ const Profile = () => {
         github: ''
     });
 
-    // Temporary states for adding new items
+
     const [newSkill, setNewSkill] = useState('');
     const [showEducationForm, setShowEducationForm] = useState(false);
     const [showExperienceForm, setShowExperienceForm] = useState(false);
@@ -65,7 +62,7 @@ const Profile = () => {
             }
         } catch (err) {
             if (err.response?.status === 404) {
-                // Profile doesn't exist yet
+
                 setProfile(null);
                 setIsEditing(true);
             } else {
@@ -118,7 +115,7 @@ const Profile = () => {
         }
     };
 
-    // Education functions
+
     const addEducation = (edu) => {
         setFormData({
             ...formData,
@@ -134,7 +131,7 @@ const Profile = () => {
         });
     };
 
-    // Experience functions
+
     const addExperience = (exp) => {
         setFormData({
             ...formData,
@@ -150,7 +147,7 @@ const Profile = () => {
         });
     };
 
-    // Skills functions
+
     const addSkill = () => {
         if (newSkill.trim() && !formData.skills.includes(newSkill.trim())) {
             setFormData({
@@ -168,7 +165,7 @@ const Profile = () => {
         });
     };
 
-    // Projects functions
+
     const addProject = (project) => {
         setFormData({
             ...formData,
@@ -194,7 +191,7 @@ const Profile = () => {
 
     return (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            {/* Header */}
+
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
                 <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent pb-1 inline-block">
                     {isEditing ? 'Edit Profile' : 'My Profile'}
@@ -252,7 +249,7 @@ const Profile = () => {
             )}
 
             <div className="space-y-8">
-                {/* Personal Information */}
+
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
                     <h2 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-100">Personal Information</h2>
                     <div className="space-y-6">
@@ -307,7 +304,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                {/* Education */}
+
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
                     <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
                         <h2 className="text-xl font-bold text-gray-900">Education</h2>
@@ -349,7 +346,7 @@ const Profile = () => {
                     )}
                 </div>
 
-                {/* Experience */}
+
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
                     <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
                         <h2 className="text-xl font-bold text-gray-900">Experience</h2>
@@ -392,7 +389,7 @@ const Profile = () => {
                     )}
                 </div>
 
-                {/* Skills */}
+
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
                     <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
                         <h2 className="text-xl font-bold text-gray-900">Skills</h2>
@@ -438,7 +435,7 @@ const Profile = () => {
                     )}
                 </div>
 
-                {/* Projects */}
+
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
                     <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
                         <h2 className="text-xl font-bold text-gray-900">Projects</h2>
@@ -495,7 +492,7 @@ const Profile = () => {
                     )}
                 </div>
 
-                {/* Links */}
+
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
                     <h2 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-100">Links</h2>
                     <div className="space-y-6">
@@ -593,7 +590,7 @@ const Profile = () => {
     );
 };
 
-// Education Form Component
+
 const EducationForm = ({ onAdd, onCancel }) => {
     const [edu, setEdu] = useState({
         school: '',
@@ -683,7 +680,7 @@ const EducationForm = ({ onAdd, onCancel }) => {
     );
 };
 
-// Experience Form Component
+
 const ExperienceForm = ({ onAdd, onCancel }) => {
     const [exp, setExp] = useState({
         company: '',
@@ -772,7 +769,7 @@ const ExperienceForm = ({ onAdd, onCancel }) => {
     );
 };
 
-// Project Form Component
+
 const ProjectForm = ({ onAdd, onCancel }) => {
     const [project, setProject] = useState({
         title: '',

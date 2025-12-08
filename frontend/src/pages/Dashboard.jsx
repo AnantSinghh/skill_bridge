@@ -1,7 +1,4 @@
-/**
- * Dashboard Page
- * Main landing page after login
- */
+
 
 import React from 'react';
 import { Link } from 'react-router-dom';

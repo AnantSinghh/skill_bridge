@@ -1,7 +1,4 @@
-/**
- * Authentication Context
- * Manages user authentication state across the application
- */
+
 
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
@@ -20,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Load user and token from localStorage on mount
+
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
         const storedUser = localStorage.getItem('user');
@@ -32,7 +29,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-    // Login function
+
     const login = (userData, authToken) => {
         setUser(userData);
         setToken(authToken);
@@ -40,7 +37,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('user', JSON.stringify(userData));
     };
 
-    // Logout function
+
     const logout = () => {
         setUser(null);
         setToken(null);
@@ -48,12 +45,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('user');
     };
 
-    // Check if user is admin
+
     const isAdmin = () => {
         return user?.role === 'admin';
     };
 
-    // Check if user is authenticated
+
     const isAuthenticated = () => {
         return !!token && !!user;
     };

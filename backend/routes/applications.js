@@ -1,7 +1,4 @@
-/**
- * Application Routes
- * Handles internship applications submitted by students
- */
+
 
 const express = require('express');
 const router = express.Router();
@@ -10,11 +7,7 @@ const Application = require('../models/Application');
 const Internship = require('../models/Internship');
 const { protect } = require('../middleware/auth');
 
-/**
- * @route   POST /api/applications
- * @desc    Submit an internship application
- * @access  Private (Students)
- */
+
 router.post(
     '/',
     [
@@ -24,7 +17,7 @@ router.post(
     ],
     async (req, res) => {
         try {
-            // Check for validation errors
+
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(400).json({
@@ -35,7 +28,7 @@ router.post(
 
             const { internshipId, coverLetter, resume } = req.body;
 
-            // Check if internship exists
+
             const internship = await Internship.findById(internshipId);
             if (!internship) {
                 return res.status(404).json({
@@ -44,7 +37,7 @@ router.post(
                 });
             }
 
-            // Check if internship is still active
+
             if (!internship.isActive) {
                 return res.status(400).json({
                     success: false,
@@ -52,7 +45,7 @@ router.post(
                 });
             }
 
-            // Check if deadline has passed
+
             if (new Date() > new Date(internship.applicationDeadline)) {
                 return res.status(400).json({
                     success: false,
@@ -60,7 +53,7 @@ router.post(
                 });
             }
 
-            // Check if user has already applied
+
             const existingApplication = await Application.findOne({
                 internship: internshipId,
                 student: req.user._id
@@ -73,7 +66,7 @@ router.post(
                 });
             }
 
-            // Create application
+
             const application = await Application.create({
                 internship: internshipId,
                 student: req.user._id,
@@ -83,7 +76,7 @@ router.post(
                 resume: resume || ''
             });
 
-            // Populate internship details
+
             await application.populate('internship', 'title company');
 
             res.status(201).json({
@@ -102,11 +95,7 @@ router.post(
     }
 );
 
-/**
- * @route   GET /api/applications/my-applications
- * @desc    Get all applications submitted by logged-in student
- * @access  Private (Students)
- */
+
 router.get('/my-applications', protect, async (req, res) => {
     try {
         const applications = await Application.find({ student: req.user._id })
@@ -128,11 +117,7 @@ router.get('/my-applications', protect, async (req, res) => {
     }
 });
 
-/**
- * @route   GET /api/applications
- * @desc    Get all applications (Admin only)
- * @access  Private/Admin
- */
+
 router.get('/', protect, async (req, res) => {
     try {
         // Only admins can view all applications
@@ -163,14 +148,10 @@ router.get('/', protect, async (req, res) => {
     }
 });
 
-/**
- * @route   PUT /api/applications/:id/status
- * @desc    Update application status (Admin only)
- * @access  Private/Admin
- */
+
 router.put('/:id/status', protect, async (req, res) => {
     try {
-        // Only admins can update application status
+
         if (req.user.role !== 'admin') {
             return res.status(403).json({
                 success: false,

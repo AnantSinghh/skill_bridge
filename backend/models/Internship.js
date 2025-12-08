@@ -1,7 +1,4 @@
-/**
- * Internship Model
- * Defines the schema for internship listings
- */
+
 
 const mongoose = require('mongoose');
 
@@ -61,7 +58,7 @@ const internshipSchema = new mongoose.Schema({
     }
 });
 
-// Update the updatedAt timestamp before saving
+
 internshipSchema.pre('save', function (next) {
     this.updatedAt = Date.now();
     next();

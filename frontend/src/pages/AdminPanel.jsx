@@ -1,7 +1,4 @@
-/**
- * Admin Panel Page
- * Manage internship listings (Create, Update, Delete)
- */
+
 
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
@@ -75,7 +72,7 @@ const AdminPanel = () => {
         setSuccess('');
 
         try {
-            // Convert skills string to array
+
             const submitData = {
                 ...formData,
                 skills: formData.skills.split(',').map(s => s.trim()).filter(s => s)
